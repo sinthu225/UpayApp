@@ -1,0 +1,59 @@
+<mat-card class="product-card">
+
+    <div class="img-area">
+        <img src="{{Single_Product.image}}" alt="">
+    </div>
+    <div class="title-rating">
+        <h4>{{ Single_Product.title}}</h4>
+        <span class="rating">
+            {{ avgRating | async | number:'1.1-1' }}
+        </span>
+    </div>
+
+    <div class="description">
+
+        {{Single_Product.description}}
+
+    </div>
+    <div class="low-pad">
+        <div *ngIf="auth.user | async; then authenticated else guest">
+        </div>
+    </div>
+
+    <div class="qty-price">
+        <div class="price">
+            {{Single_Product.price | currency:'USD'}}
+        </div>
+        <div class="stock" [ngClass]="{'low-stock': Single_Product.stock < 15}">
+            {{Single_Product.stock}} units available
+        </div>
+    </div>
+
+
+    <ng-template #guest>
+
+        <div>
+            Login to Rate this product
+        </div>
+
+    </ng-template>
+
+    <ng-template #authenticated>
+        <div class="low-pad">
+            <app-review-panel [productIdA]="productId" [userId]="userId"></app-review-panel>
+        </div>
+    </ng-template>
+
+    <div *ngIf="auth.user | async">
+        <div class="add-to-cart-wrapper">
+            <button mat-raised-button color="warn" class="add-to-cart" (click)="addToCartHandler(productId)">
+                <mat-icon aria-label="Add to cart">
+                    shopping_basket
+                </mat-icon>
+                <span>Add to Cart</span>                                
+            </button>
+        </div>
+
+    </div>
+
+</mat-card>

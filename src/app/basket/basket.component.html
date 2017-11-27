@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="container">
+    <div class="page-basket">
+        <div class="basket-area">
+            <div class="basket">
+                <app-basket-info *ngFor="let cartItem of cartItems | async" [CartItem]="cartItem"></app-basket-info>
+            </div>
+            <div class="checkout-area"></div>
+        </div>
+    </div>

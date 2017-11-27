@@ -1,0 +1,23 @@
+<!-- {{ avgRating | async }} -->
+<!-- <h3>Reviews</h3>
+<div *ngFor="let star of stars | async">
+  {{ star.uname }} gave {{ star.movieId }} {{ star.value }} stars
+</div> -->
+
+<fieldset class="rating clearfix low-pad">
+  <ng-container  *ngFor="let num of [5, 4, 3, 2, 1]; let idx = index">      
+      <input (click)="ratingHandler(num)" 
+            [id]="'star'+num+'-'+productIdA"
+            [value]="num-0.5"
+            name="rating" 
+            type="radio" />
+      <label  [id]="'star-label'+num+'-'+productIdA" class="full" [for]="'star'+num+'-'+productIdA"></label>
+      
+      <input (click)="ratingHandler(num-0.5)" 
+             [value]="num-0.5"
+             [id]="'halfstar'+num+'-'+productIdA" 
+             name="rating" 
+             type="radio"  />
+      <label  [id]="'halfstar-label'+num"  class="half" [for]="'halfstar'+num+'-'+productIdA"></label>
+  </ng-container>
+</fieldset>

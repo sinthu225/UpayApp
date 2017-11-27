@@ -1,0 +1,37 @@
+<mat-toolbar class="header-main" color="primary">
+  <mat-toolbar-row>
+    <span class="logo">
+        <img src="assets/images/logo2.png" alt="LOGO">
+    </span>
+
+    <span class="spacer"></span>
+
+    <div *ngIf="auth.user | async; then authenticated else guest">
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<ng-template #guest>
+  <!-- <button  mat-button (click)="auth.googleLogin()">
+    <i class="fa fa-google"></i> Connect Google
+  </button> -->
+  <button mat-button [routerLink]="['/login']">Login</button>
+  
+</ng-template>
+
+<ng-template #authenticated>
+  <div class="profile-area" *ngIf="auth.user | async as user">
+    
+    
+    <button mat-button [routerLink]="['/basket']"> <mat-icon>shopping_basket</mat-icon> </button>
+    <button mat-button class="user-name">Welcome, {{ user.displayName }}</button>
+    <button mat-button (click)="auth.signOut()">Logout</button>
+    <div class="profile-pic">
+        <img [src]="user.photoURL">
+      </div>
+  </div>
+</ng-template>

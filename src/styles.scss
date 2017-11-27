@@ -1,1 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
+// Author: Sinthujan
+//  Mail: psinthu.04@gmail.com
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$main-black: #060606;
+$main-orange: #ea5c18;
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    .container{
+      margin: 0 auto;
+      max-width: 1000px;
+
+      &:before,
+      &:after{
+        content: " ";
+        display: table;
+      }
+    }
+  
+    &:after{
+        clear: both;
+    }
+}
+
+
+
+
+@mixin respond-to($media) {
+    @if $media == mobile {
+      @media only screen and (max-width: 639px) { @content; }
+    }
+    @else if $media == tablet {
+      @media only screen and (min-width: 640px) and (max-width: 1023px) { @content; }
+    }
+    @else if $media == desktop {
+      @media only screen and (min-width: 1024px) { @content; }
+    }
+  }
+
+
+  @mixin translateY($e) {
+    -webkit-transform: translateY($e);
+    -moz-transform: translateY($e);
+    transform: translateY($e);
+  }
+
+  @mixin translateX($e) {
+    -webkit-transform: translateX($e);
+    -moz-transform: translateX($e);
+    transform: translateX($e);
+  }
+
+  @mixin translateBoth($e, $a) {
+    -webkit-transform: translate($e, $a);
+    -moz-transform: translate($e, $a);
+    transform: translate($e, $a);
+  }
+  
+  @mixin transition($e) {
+    -webkit-transition: $e;
+    -moz-transition: $e;
+    transition: $e;
+  }

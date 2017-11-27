@@ -1,0 +1,28 @@
+.basket-row{
+    padding: 20px 10px;
+    display: flex;
+    margin-bottom: 30px;
+   
+
+    .basket-actions{
+        width: 20%;
+    }
+
+    .basket-image{
+        width: 20%;
+    }
+
+    .basket-info{
+        width:30%;
+    }
+
+    .basket-qty{
+        width: 15%;
+        text-align: center;
+    }
+
+    .basket-total{
+        width:15%;
+        text-align: right;
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../styles.scss';
+
+
+.products-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .product-tile{        
+        padding: 15px;
+        box-sizing: border-box;
+
+        width: 31%;
+        margin-bottom: 2%;
+        
+    
+       
+    }
+
+   
+}
