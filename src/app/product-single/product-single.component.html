@@ -32,7 +32,7 @@
 
     <ng-template #guest>
 
-        <div>
+        <div class="login-to-add">
             Login to Rate this product
         </div>
 
@@ -57,3 +57,5 @@
     </div>
 
 </mat-card>
+
+<app-spinner *ngIf="showSpinner"></app-spinner>

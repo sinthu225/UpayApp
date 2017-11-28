@@ -23,6 +23,8 @@ export class ProductSingleComponent implements OnInit {
   stars: Observable<any>;
   avgRating: Observable<any>;
 
+  showSpinner: boolean = false;
+
  
   constructor(
     private afs: AngularFirestore, 
@@ -49,7 +51,8 @@ export class ProductSingleComponent implements OnInit {
   }
 
   addToCartHandler(value) {
-    this._productService.addToCart(value, 1, this.Single_Product.title, this.Single_Product.price, this.UID);    
+    this.showSpinner = true;
+    this._productService.addToCart(value, 1, this.Single_Product.title, this.Single_Product.price, this.UID)
   }
 
 }

@@ -6,6 +6,8 @@ import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material.module';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestore, AngularFirestoreModule} from 'angularfire2/firestore';
+
 import { AuthService } from './core/auth.service';
 import { Productservice } from './products.service';
 
@@ -27,6 +29,10 @@ import { Ratingservice } from './star.service';
 import { ReviewPanelComponent } from './review-panel/review-panel.component';
 import { BasketComponent } from './basket/basket.component';
 import { BasketInfoComponent } from './basket-info/basket-info.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -41,14 +47,19 @@ import { BasketInfoComponent } from './basket-info/basket-info.component';
     ReviewPanelComponent,
     BasketComponent,
     BasketInfoComponent,
+    SpinnerComponent,
+    SearchComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase, 'Upay-app'),
+    AngularFirestoreModule.enablePersistence(),
     CoreModule,
-    routes
+    routes,
+    FormsModule
   ],
   providers: [AuthService, Ratingservice, Productservice],
   bootstrap: [AppComponent]

@@ -1,42 +1,53 @@
 @import '../../styles.scss';
 
-.header-main{
+.header{
 
-    &.mat-toolbar{
-        &.mat-primary {
-            background: $main-black;
-            color: rgba(255,255,255,.87);
-        }
-    }
+    background: $main-black;
 
-
-    .logo{
-        height: 30px;
-        width: auto;
-
-        img {
-            height: 100%;
-            width: auto;
-        }
-    }
-    
-
-    .spacer {
-        flex: 1 1 auto;
-      }
-
-    .profile-area{
-        display: flex;
-        .profile-pic {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            overflow: hidden;
-
-            img{
-                width: 100%;
-                height: auto;
+    .header-main{
+        
+            &.mat-toolbar{
+                &.mat-primary {
+                    background: $main-black;
+                    color: rgba(255,255,255,.87);
+                }
             }
+        
+        
+            .logo{
+                height: 30px;
+                width: auto;
+        
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            
+        
+            .spacer {
+                flex: 1 1 auto;
+              }
+        
+            .profile-area{
+                display: flex;
+                .profile-pic {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    overflow: hidden;
+        
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        
+            
         }
-    }
+
 }
+
+
+

@@ -37,8 +37,17 @@ export class Productservice {
   }
 
   getSingleProduct(productID ){
-   
+    const cartItemRef = this.afs.collection('baskets', ref => ref.where('userID', '==', productID));
+    return cartItemRef.valueChanges();
 
+    // const racesCollection: AngularFirestoreCollection<Product>;
+    // return racesCollection.snapshotChanges().map(actions => {       
+    //   return actions.map(a => {
+    //     const data = a.payload.doc.data() as Race;
+    //     data.id = a.payload.doc.id;
+    //     return data;
+    //   });
+    // });
   }
 
   getCartItems(userID) {

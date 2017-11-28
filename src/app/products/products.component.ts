@@ -17,6 +17,8 @@ export class ProductsComponent implements OnInit {
   
   products;
 
+  showSpinner: boolean = true;
+
   constructor(public auth: AuthService, public _productService: Productservice ) { 
     
   }
@@ -38,6 +40,10 @@ export class ProductsComponent implements OnInit {
                 
     );
     this.products = this._productService.getProducts();
+
+    this.products.subscribe(
+      () => this.showSpinner=false
+    )
     
   }
 

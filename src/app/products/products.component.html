@@ -1,8 +1,20 @@
-<div class="container">
+
     <div class="products-container">
 
         <div *ngFor="let product of products | async" class="product-tile">
             <app-product-single [PID]="product.id" [UID]="UID" [Single_Product]="product"></app-product-single>
-        </div>        
+        </div>   
+        <div *ngFor="let product of products | async" class="product-tile">
+                <app-product-single [PID]="product.id" [UID]="UID" [Single_Product]="product"></app-product-single>
+            </div>   
+            <div *ngFor="let product of products | async" class="product-tile">
+                    <app-product-single [PID]="product.id" [UID]="UID" [Single_Product]="product"></app-product-single>
+                </div>   
+                <div *ngFor="let product of products | async" class="product-tile">
+                        <app-product-single [PID]="product.id" [UID]="UID" [Single_Product]="product"></app-product-single>
+                    </div>        
     </div>
-</div>
+
+
+<app-spinner *ngIf="showSpinner"></app-spinner>
+
