@@ -1,3 +1,69 @@
-<p>
-  product-details works!
-</p>
+<app-header></app-header>
+
+<div class="container page-details">
+  <mat-card class="product-details">
+    <div class="image-area">
+      <div class="image-container">
+          <img src="{{ product?.image }}" alt="">
+      </div>
+      
+    </div>
+    <div class="info-area">
+      <h2 >{{ product?.id }}</h2>
+      <p>
+          {{ product?.description }}
+      </p>
+
+      <div>
+
+      </div>
+      <div class="tbl-info">
+        <div class="label">
+          <h3>Price</h3>
+        </div>
+        <div class="value">
+          <h3>{{  product?.price | currency:'USD'}}</h3>
+        </div>       
+      </div>
+      <div class="tbl-info">
+          
+          <div class="label">
+              <h3>Available Qty</h3>
+            </div>
+            <div class="value">
+              <h3 [ngClass]="{'low-stock': product?.stock < 15}">{{  product?.stock }}</h3>
+            </div>
+        </div>
+
+        <div class="tbl-info">
+            
+            <div class="label">
+                <h3>Ratings</h3>
+              </div>
+              <div class="value">
+                <h3>{{  avgRating | async | number:'1.1-1' }}</h3>
+              </div>
+          </div>
+
+        <div *ngIf="auth.user | async">
+
+            <app-review-panel [productIdA]="product_ID" [userId]="user"></app-review-panel>
+
+            <div>
+                <button mat-raised-button color="warn" class="add-to-cart" (click)="addToCartHandler()">
+                    <mat-icon aria-label="Add to cart">
+                        shopping_basket
+                    </mat-icon>
+                    <span>Add to Cart</span>                                
+                </button>
+            </div>
+
+            
+    
+        </div>
+    </div>
+  </mat-card>
+  
+</div>
+
+<app-spinner *ngIf="showSpinner"></app-spinner>

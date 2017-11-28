@@ -36,18 +36,35 @@ export class Productservice {
     });
   }
 
-  getSingleProduct(productID ){
-    const cartItemRef = this.afs.collection('baskets', ref => ref.where('userID', '==', productID));
-    return cartItemRef.valueChanges();
+  
 
-    // const racesCollection: AngularFirestoreCollection<Product>;
-    // return racesCollection.snapshotChanges().map(actions => {       
-    //   return actions.map(a => {
-    //     const data = a.payload.doc.data() as Race;
-    //     data.id = a.payload.doc.id;
-    //     return data;
-    //   });
+  searchProducts(start, end) {
+    const productCollection: AngularFirestoreCollection<Product> = this.afs.collection('products', ref => ref.limit(4).orderBy('title').startAt(start).endAt(end))
+    return productCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Product;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
+  }
+
+
+
+  getSingleProduct(productID ){
+    // const productPath = `products/${productID}`;
+
+    // return this.afs.firestore.doc(productPath).get()
+    // .then(docSnapshot => {      
+    //   console.log(docSnapshot.data())
+    //    return docSnapshot.data();     
     // });
+
+    let productDoc = this.afs.doc('products/'+productID);
+    return productDoc.valueChanges();
+
+    
+
   }
 
   getCartItems(userID) {

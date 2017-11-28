@@ -14,13 +14,15 @@
         height: 25px;
     }
 
-    // :not(.mat-focused) {
-        
-    //         ~ .result-area{
-    //             display: none;
-            
-    //     }
-    // }
+    :not(.mat-focused) {        
+            ~ .result-area{
+                display: none;            
+        }
+    }
+
+    .result-area:hover{
+        display: block !important;            
+}
     
 }
 

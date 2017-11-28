@@ -93,3 +93,31 @@ body {
         background: #757575;
     }
 }
+
+.view-mobile{
+  @include respond-to(mobile){
+    display: flex !important;
+    justify-content: space-between;
+  }
+  @include respond-to(desktop){
+    display: none !important;
+  }
+
+  @include respond-to(tablet){
+    display: none !important;
+  }
+}
+
+.view-desktop{
+  @include respond-to(mobile){
+    display: none !important;
+  }
+  @include respond-to(desktop){
+    display:flex !important;
+  }
+
+  @include respond-to(tablet){
+    display: flex !important;
+  }
+}
+

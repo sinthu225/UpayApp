@@ -12,6 +12,16 @@
         width: 30%;
         margin-bottom: 2%;
         margin-right: 3%;
+
+        @include respond-to(mobile){
+            width: 90%;
+            margin-right:0;
+        }
+
+        @include respond-to(tablet){
+            width: 45%;
+            margin-right: 3%;
+        }
         
     
        

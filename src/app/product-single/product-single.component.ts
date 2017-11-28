@@ -28,12 +28,14 @@ export class ProductSingleComponent implements OnInit {
  
   constructor(
     private afs: AngularFirestore, 
-    public auth: AuthService,
+    private auth: AuthService,
     private _ratingService: Ratingservice,
-    public _productService: Productservice
+    private _productService: Productservice
   ) { }
 
   ngOnInit() {
+
+    
     this.stars = this._ratingService.getProductRatings(this.productId)
     this.avgRating = this.stars.map(arr => {
       const ratings = arr.map(v => v.value)

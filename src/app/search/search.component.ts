@@ -4,6 +4,8 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
 import { CurrencyPipe } from '@angular/common';
 
+import { Productservice } from '../products.service';
+
 
 @Component({
   selector: 'app-search',
@@ -16,6 +18,8 @@ export class SearchComponent implements OnInit {
   
    startAt = new Subject();
    endAt = new Subject();
+
+   queryResults = new Subject();
   
    products;
    allproducts;
@@ -23,7 +27,7 @@ export class SearchComponent implements OnInit {
    startobs = this.startAt.asObservable();
    endobs = this.endAt.asObservable();
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, public _productService: Productservice) { }
 
   ngOnInit() {
 
@@ -44,15 +48,10 @@ export class SearchComponent implements OnInit {
       this.startAt.next(q);
       this.endAt.next(q + "\uf8ff");
     }
-    // else {
-    //   this.products = this.allproducts;
-    // }
-
-    
   }
 
   firequery(start, end) {
-    return this.afs.collection('products', ref => ref.limit(4).orderBy('title').startAt(start).endAt(end)).valueChanges();
+    return this._productService.searchProducts(start, end);    
   }
  
   getallproducts() {

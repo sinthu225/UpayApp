@@ -19,12 +19,11 @@
 
         </ng-template>
 
-        <ng-template #authenticated>
-          <div class="profile-area" *ngIf="auth.user | async as user">
-
-
-
-
+        <ng-template #authenticated >
+            <button mat-button [routerLink]="['/basket']" class="view-mobile">
+              <mat-icon>shopping_basket</mat-icon>
+            </button>
+          <div class="profile-area view-desktop" *ngIf="auth.user | async as user">
             <button mat-button [routerLink]="['/basket']">
               <mat-icon>shopping_basket</mat-icon>
             </button>
@@ -45,3 +44,12 @@
   </div>
 
 </div>
+
+<div class="profile-area view-mobile" *ngIf="auth.user | async as user">
+    <button mat-button class="user-name">Welcome, {{ user.displayName }}</button>
+    <button mat-button (click)="auth.signOut()">Logout</button>
+
+    <!-- <div class="profile-pic">
+      <img [src]="user.photoURL">
+    </div> -->
+  </div>
