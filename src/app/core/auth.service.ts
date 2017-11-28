@@ -46,6 +46,12 @@ export class AuthService {
     const provider = new firebase.auth.FacebookAuthProvider()
     return this.oAuthLogin(provider);
   }
+
+  gitLogin() {
+    const provider = new firebase.auth.GithubAuthProvider()
+    return this.oAuthLogin(provider);
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {

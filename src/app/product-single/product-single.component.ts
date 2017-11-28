@@ -28,7 +28,7 @@ export class ProductSingleComponent implements OnInit {
  
   constructor(
     private afs: AngularFirestore, 
-    private auth: AuthService,
+    public auth: AuthService,
     private _ratingService: Ratingservice,
     private _productService: Productservice
   ) { }

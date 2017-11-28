@@ -1,28 +1,21 @@
 <div class="login-wrapper">
     <mat-card class="login-card">
-            <div class="logo">
-                    <img src="assets/images/logo.png">
-            </div>
-            
-            <!-- <span class="error" *ngIf="error">{{ error }}</span> -->
-            <button 
-                (click)="auth.facebookLogin()"                 
-                id="fb">Login With Facebook</button>
-            <button 
-                (click)="auth.googleLogin()"                    
-                id="google">Login With Google</button>
-        
-        
-            <button 
-                routerLink="/login-email"                     
-                id="email">Email</button>
-          
-            <a 
-                class="register-link"
-                routerLink="/signup" 
-                routerLinkActive="active" 
-                >No account? <strong>Create one here</strong></a>
-                
-        </mat-card>
-</div>
+        <div class="logo">
+            <img src="assets/images/logo.png">
+        </div>
 
+        <!-- <span class="error" *ngIf="error">{{ error }}</span> -->
+        <button (click)="auth.facebookLogin()" id="fb">Login With Facebook</button>
+        <button (click)="auth.googleLogin()" id="google">Login With Google</button>
+
+        <button (click)="auth.gitLogin()" id="git">Login With GIT</button>
+
+
+        <button routerLink="/login-email" id="email">Email</button>
+
+        <a class="register-link" routerLink="/signup" routerLinkActive="active">No account?
+            <strong>Create one here</strong>
+        </a>
+
+    </mat-card>
+</div>

@@ -35,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _productservice: Productservice,
-    private auth: AuthService,
+    public auth: AuthService,
     private _ratingService: Ratingservice,
   ) { }
 
