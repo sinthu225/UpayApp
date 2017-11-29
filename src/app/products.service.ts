@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
 export interface Product {
-  userID: any;
   title: any;
   description: any;
   image: any;
   stock: any;
   price: any;
   id: any;
+}
+
+export interface AddProduct {
+  title: any;
+  description: any;
+  image: any;
+  stock: any;
+  price: any;
 }
 
 export interface CartItem {
@@ -20,10 +28,19 @@ export interface CartItem {
   userID: any;
 }
 
+
+
 @Injectable()
 export class Productservice {
 
-  constructor(private afs: AngularFirestore) { }
+
+
+  private ProductsCollection: AngularFirestoreCollection<AddProduct>
+
+  constructor(private afs: AngularFirestore, private _router: Router) { 
+    this.ProductsCollection = afs.collection<AddProduct>('products');
+
+  }
 
   getProducts() {
     const productCollection: AngularFirestoreCollection<Product> = this.afs.collection('products');
@@ -36,7 +53,7 @@ export class Productservice {
     });
   }
 
-  
+
 
   searchProducts(start, end) {
     const productCollection: AngularFirestoreCollection<Product> = this.afs.collection('products', ref => ref.limit(4).orderBy('title').startAt(start).endAt(end))
@@ -51,20 +68,9 @@ export class Productservice {
 
 
 
-  getSingleProduct(productID ){
-    // const productPath = `products/${productID}`;
-
-    // return this.afs.firestore.doc(productPath).get()
-    // .then(docSnapshot => {      
-    //   console.log(docSnapshot.data())
-    //    return docSnapshot.data();     
-    // });
-
-    let productDoc = this.afs.doc('products/'+productID);
+  getSingleProduct(productID) {
+    let productDoc = this.afs.doc('products/' + productID);
     return productDoc.valueChanges();
-
-    
-
   }
 
   getCartItems(userID) {
@@ -99,13 +105,41 @@ export class Productservice {
           return this.afs.doc(cartPath).set(cartitem)
         }
       });
-
-
-
-
   }
 
-  
+  removeFromCart(productId, userID, qty) {
+    const cartPath = `baskets/${userID}_${productId}`;
+    const productPath = `products/${productId}`;
+    this.afs.firestore.doc(productPath).get()
+      .then(docSnapshot => {
+        if (docSnapshot.exists) {
+          const tempProduct = docSnapshot.data();
+          tempProduct.stock = tempProduct.stock + qty
+          this.afs.doc(productPath).set(tempProduct).then(
+            (res) => {
+              this.afs.firestore.doc(cartPath).get()
+                .then(docSnapshot => {
+                  this.afs.doc(cartPath).delete();
+                })
+            }
+          )
+        }
+      });
+  }
+
+  addProducts(title, description, price, stock, image) {
+    const id = this.afs.createId();
+    const item: AddProduct = { title, description, image, stock, price };
+    this.ProductsCollection.add(item).then(
+      res => {
+        this._router.navigate(['/product-details, , res.id]'])
+        console.log(res);
+      }
+    )
+    
+  }
+
+
 
 
 }

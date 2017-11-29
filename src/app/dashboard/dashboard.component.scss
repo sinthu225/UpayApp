@@ -1,0 +1,13 @@
+@import '../../styles.scss';
+
+
+.container {
+    .add-container{
+        margin: 20px 0;
+        text-align: right;
+
+        @include respond-to(mobile){
+            margin: 20px;
+          }
+    }
+}

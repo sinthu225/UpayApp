@@ -47,20 +47,14 @@ export class ProductDetailsComponent implements OnInit {
         if(res != null)
         {
           this.user = res.uid
-        }
-         
+        }         
         else
         {
           this.user = null;
         }
-      }
-                
+      }                
     );
     
-
-    
-
-
     this.product_ID = this._route.snapshot.queryParams['id'];     
     this._productservice.getSingleProduct(this.product_ID).subscribe(
       res => this.product = res

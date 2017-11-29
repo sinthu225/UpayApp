@@ -1,28 +1,89 @@
+@import '../../styles.scss';
+
 .basket-row{
     padding: 20px 10px;
     display: flex;
     margin-bottom: 30px;
+
+    @include respond-to(mobile){
+        display: block;
+      }
    
 
     .basket-actions{
         width: 20%;
+        @include respond-to(mobile){
+            display: inline-block;
+            float: left;
+            min-height: 80px;
+          }
     }
 
     .basket-image{
         width: 20%;
+        @include respond-to(mobile){
+            width: 80%;
+            display: inline-block;
+            float: left;
+            text-align: right;
+          }
+
+        .product-image{
+            height: 50px;
+            width: auto;
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+
     }
 
     .basket-info{
         width:30%;
+
+        @include respond-to(mobile){
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          p{
+            @include respond-to(mobile){
+                margin-top: 0;
+              }
+          }
+
+        
+
+
+        h4{
+            margin-top: 0;
+        }
     }
 
     .basket-qty{
         width: 15%;
         text-align: center;
+
+        @include respond-to(mobile){
+            width: 50%;
+            display: inline-block;
+            float: left;
+            text-align: left;
+          }
+ 
     }
 
     .basket-total{
         width:15%;
         text-align: right;
+
+        @include respond-to(mobile){
+            width: 50%;
+            display: inline-block;
+          }
+
     }
 }

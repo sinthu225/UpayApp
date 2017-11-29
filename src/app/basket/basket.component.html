@@ -3,8 +3,17 @@
     <div class="page-basket">
         <div class="basket-area">
             <div class="basket">
+                <mat-card class="basket-row view-desktop">
+                    <div class="basket-actions">Remove</div>
+                    <div class="basket-image">Image</div>
+                    <div class="basket-info">Details</div>
+                    <div class="basket-qty">Quantity</div>
+                    <div class="basket-total">Sub Total</div>
+                </mat-card>
                 <app-basket-info *ngFor="let cartItem of cartItems | async" [CartItem]="cartItem"></app-basket-info>
-            </div>
-            <div class="checkout-area"></div>
+                <mat-card class="basket-footer">                
+                        <div class="Total"><h3><span>Total : </span>{{ totalBasket | async | currency:'USD' }}</h3></div>
+                </mat-card>
+            </div>            
         </div>
     </div>

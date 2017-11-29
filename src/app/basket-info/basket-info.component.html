@@ -1,12 +1,23 @@
 <mat-card class="basket-row">
     <div class="basket-actions">
-        <button mat-icon-button color="accent">
+        <button mat-icon-button color="accent" (click)="removeFromCartHandler()">
             <mat-icon aria-label="Remove">delete</mat-icon>
         </button>
     </div>
-    <div class="basket-image"></div>
-    <div class="basket-info">{{ CartItem.title }}</div>
+    <div class="basket-image">
+        <div class="product-image">
+                <img src="{{ singleProduct?.image }}" alt="">
+        </div>
+        
+    </div>
+    <div class="basket-info">
+        <h4> {{ CartItem.title }} </h4>
+        <p>
+            Unit Price :{{singleProduct?.price}}
+        </p>        
+    </div>
     <div class="basket-qty">{{ CartItem.qty }}</div>
-    <div class="basket-total">{{ CartItem.subTotal }}</div>
+    <div class="basket-total">{{ CartItem.subTotal | currency:'USD' }}</div>
 
 </mat-card>
+

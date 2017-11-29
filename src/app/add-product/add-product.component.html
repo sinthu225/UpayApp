@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container">
+
+    <mat-card class="add-products">
+        <h3>Add New Product</h3>
+        
+          <mat-form-field>
+              <input matInput placeholder="Product Title" type="text" [(ngModel)]="title">
+          </mat-form-field>
+
+          <mat-form-field>
+              <textarea matInput placeholder="Product Description" [(ngModel)]="description"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput placeholder="Product Price" type="text" [(ngModel)]="price">
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput placeholder="Product Stock" type="number" [(ngModel)]="stock">
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput placeholder="Product Image (URL)" type="text" [(ngModel)]="image">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary"  (click)="addProductHandler()">
+                <mat-icon aria-label="Add to cart">
+                    create
+                </mat-icon>
+                <span>Add Product</span>                                
+            </button>
+
+    </mat-card>
+  
+
+</div>
+
+<app-spinner *ngIf="showSpinner"></app-spinner>

@@ -41,7 +41,7 @@ $lines-to-show: 3;
             background: yellow;
             border-radius: 50%;
             right: 0;
-            top: 0;
+            top: -30px;
             color: $main-orange;
             @include translateY(-50%);
             font-weight: bold;

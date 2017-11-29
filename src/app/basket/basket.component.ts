@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Productservice } from '../products.service';
 import { AuthService } from '../core/auth.service';
 
+import { Observable } from 'rxjs/Observable';
 
-
-
-
-
+import { CurrencyPipe } from '@angular/common';
 
 
 
@@ -17,15 +15,10 @@ import { AuthService } from '../core/auth.service';
 })
 export class BasketComponent implements OnInit {
 
-
-
-  cartItems;
+  cartItems: Observable<any>;
   user;
 
-
-
-
-
+  totalBasket: Observable<any>;
 
   constructor(public auth: AuthService, public _productService: Productservice) { }
 
@@ -35,6 +28,11 @@ export class BasketComponent implements OnInit {
         if (res != null) {
           this.user = res.uid;
           this.cartItems = this._productService.getCartItems(this.user);
+
+          this.totalBasket = this.cartItems.map(arr => {
+            const totalbasket = arr.map(v => v.subTotal);
+            return totalbasket.length ? totalbasket.reduce((total, val) => total + val) : 0
+          })
         }
         else {
           this.user = null;
@@ -42,7 +40,6 @@ export class BasketComponent implements OnInit {
       }
 
     );
-
   }
 
 }

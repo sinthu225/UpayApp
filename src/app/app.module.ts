@@ -33,6 +33,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     SpinnerComponent,
     SearchComponent,
     ProductDetailsComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

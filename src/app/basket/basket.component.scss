@@ -2,11 +2,52 @@
     display: flex;
 
     .basket-area{
-        width: 80%;
         margin: 0 auto;
+        width: 100%;
     }
 
     .basket{
         padding-top: 30px;
+
+        .basket-row{
+            padding: 10px 10px;
+            display: flex;
+            margin-bottom: 20px;
+
+            &.mat-card {
+                background: #949494;
+            }
+           
+        
+            .basket-actions{
+                width: 20%;
+            }
+        
+            .basket-image{
+                width: 20%;
+            }
+        
+            .basket-info{
+                width:30%;
+            }
+        
+            .basket-qty{
+                width: 15%;
+                text-align: center;
+            }
+        
+            .basket-total{
+                width:15%;
+                text-align: right;
+            }
+        }
     }
+
+    .basket-footer{
+        .Total {
+            text-align: right;
+        }
+    }
+
+
 }
