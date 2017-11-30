@@ -1,7 +1,7 @@
 <!-- <app-user-profile></app-user-profile> -->
 <app-header></app-header>
 <div class="container">
-        <div class="add-container">
+        <div class="add-container" *ngIf="auth.user | async">
                 <button mat-fab color="primary" [routerLink]="['/add-product']">
                      <mat-icon aria-label="Add Product">create</mat-icon>
                 </button>
