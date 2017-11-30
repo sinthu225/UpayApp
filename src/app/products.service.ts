@@ -132,8 +132,10 @@ export class Productservice {
     const item: AddProduct = { title, description, image, stock, price };
     this.ProductsCollection.add(item).then(
       res => {
-        this._router.navigate(['/product-details, , res.id]'])
-        console.log(res);
+        let navigationExtras = {
+          queryParams: { 'id': res.id }
+        };
+        this._router.navigate(['/product-details/'+res.id], navigationExtras);
       }
     )
     

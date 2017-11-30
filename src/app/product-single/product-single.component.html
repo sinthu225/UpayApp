@@ -44,26 +44,30 @@
         </div>
     </ng-template>
 
-    <div *ngIf="auth.user | async">
+    <div class="btn-area">
+        <div *ngIf="auth.user | async">
+            <div class="add-to-cart-wrapper">
+                <button mat-raised-button color="warn" class="add-to-cart" (click)="addToCartHandler(productId)">
+                    <mat-icon aria-label="Add to cart">
+                        shopping_basket
+                    </mat-icon>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+        </div>
+
         <div class="add-to-cart-wrapper">
-            <button mat-raised-button color="warn" class="add-to-cart" (click)="addToCartHandler(productId)">
+            <button mat-raised-button color="accent" class="add-to-cart" [routerLink]="['/product-details', Single_Product.id]" [queryParams]="{id: Single_Product.id}">
                 <mat-icon aria-label="Add to cart">
-                    shopping_basket
+                    pageview
                 </mat-icon>
-                <span>Add to Cart</span>
+                <span>View Details</span>
             </button>
         </div>
 
     </div>
 
-    <div class="add-to-cart-wrapper">
-        <button mat-raised-button color="warn" class="add-to-cart" [routerLink]="['/product-details', Single_Product.id]" [queryParams]="{id: Single_Product.id}">
-            <mat-icon aria-label="Add to cart">
-                pageview
-            </mat-icon>
-            <span>View Details</span>
-        </button>
-    </div>
 
 </mat-card>
 

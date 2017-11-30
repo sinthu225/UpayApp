@@ -31,6 +31,7 @@ export class BasketComponent implements OnInit {
 
           this.totalBasket = this.cartItems.map(arr => {
             const totalbasket = arr.map(v => v.subTotal);
+            console.log(totalbasket);
             return totalbasket.length ? totalbasket.reduce((total, val) => total + val) : 0
           })
         }

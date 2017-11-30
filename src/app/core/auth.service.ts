@@ -22,6 +22,8 @@ export class AuthService {
 
   user: Observable<User>;
 
+  error;
+
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router) {
@@ -52,12 +54,53 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
+  emailLogin(email, password) {
+
+    this.afAuth.auth.signInWithEmailAndPassword(
+      email,
+      password      
+    ).then(
+      (success) => {
+        let uid = success.uid;
+        let email = success.email;
+        let displayName = success.displayName;
+        let photoURL = success.photoURL;
+        let phoneNumber = success.phoneNumber;
+        const user : User = {uid, email, photoURL, displayName }        
+        this.updateUserData(user);
+        this.router.navigate(['/']);
+    })
+  }
+
+  signUp(email, password, name , pnum){
+    this.afAuth.auth.createUserWithEmailAndPassword(
+      email,
+       password
+     ).then(
+       (success) => {
+         
+        let uid = success.uid;
+        let email = success.email;
+        let displayName = name;
+        let photoURL = "http://www.eindhovenstartups.com/wp-content/uploads/2016/08/blank_male_avatar.jpg";
+        let phoneNumber = pnum;
+
+        const user : User = {uid, email, photoURL, displayName, phoneNumber }
+        
+        this.updateUserData(user);
+        this.router.navigate(['/']);
+     }).catch(
+       (err) => {
+       this.error = err;
+     })
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        
+
         this.updateUserData(credential.user);
-        this.router.navigate([ '/' ]);
+        this.router.navigate(['/']);
       })
   }
 
@@ -68,9 +111,18 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      phoneNumber: user.phoneNumber
     }
-    return userRef.set(data)
+
+    this.afs.firestore.doc(`users/${user.uid}`).get()
+    .then(docSnapshot => {
+      if (!docSnapshot.exists) {
+        return userRef.set(data)
+      }        
+    });
+
+    
   }
   signOut() {
     this.afAuth.auth.signOut().then(() => {

@@ -1,0 +1,42 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+    <div class="logo">
+      <img src="assets/images/logo.png">
+    </div>
+
+    <h3>Sign Up for UPay App !</h3>
+
+    <form #formData='ngForm' class="signup-form">
+
+        <mat-form-field>
+            <input matInput type="text" placeholder="Your Name .." name="displayName" [(ngModel)]="displayName" required>
+          </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email address.." name="email" [(ngModel)]="email" required>
+
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password"required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Phone Number" type="text" name="pnum" [(ngModel)]="pnum">
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" (click)="auth.signUp(email, password, displayName , pnum)" [disabled]="!formData.valid">
+        <span>Create my account</span>
+      </button>
+
+    </form>
+
+    <a class="register-link" routerLink="/login" routerLinkActive="active">
+        <strong>Back</strong>
+    </a>
+
+
+
+  </mat-card>
+</div>

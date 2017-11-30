@@ -34,6 +34,8 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { SignupComponent } from './signup/signup.component';
+import { EmailComponent } from './email/email.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     SearchComponent,
     ProductDetailsComponent,
     AddProductComponent,
+    SignupComponent,
+    EmailComponent,
   ],
   imports: [
     BrowserModule,

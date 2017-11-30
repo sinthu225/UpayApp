@@ -6,6 +6,11 @@ $lines-to-show: 3;
 .product-card{
     width: 100%;
 
+    .btn-area{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
     .img-area{
         height: 200px;
         width: auto;
@@ -86,7 +91,7 @@ $lines-to-show: 3;
 
         .add-to-cart{
             display: flex;
-            font-size: 18px;
+            font-size: 12px;
             margin: 0 auto;
         }
 
