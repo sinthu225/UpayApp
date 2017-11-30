@@ -8,10 +8,10 @@
     <mat-list>
       <mat-list-item *ngFor="let product of products" class="result-item"  [routerLink]="['/product-details', product.id]" [queryParams]="{id: product.id}">
         <mat-icon mat-list-icon>
-          <img class="img-icon" src="{{ product.image}}" alt="">
+          <img class="img-icon" src="{{ product?.image}}" alt="">
         </mat-icon>
-        <h4 mat-line>{{product.title}}</h4>
-        <p mat-line> {{product.price | currency:'USD'}} </p>
+        <h4 mat-line>{{product?.title}}</h4>
+        <p mat-line> {{product?.price | currency:'USD'}} </p>
       </mat-list-item>
     </mat-list>
   </div>
